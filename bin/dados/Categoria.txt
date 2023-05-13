@@ -1,0 +1,2 @@
+idCategoria;nome;percentualComissao
+001;vestuario;10
