@@ -5,47 +5,44 @@ import java.io.*;
 
 public class Leitor {
 	private String caminhoArquivo;
+	private List<String[]> linhasSeparadas = new ArrayList<>();
+	private List<HashMap<String, String>> chavesValores = new ArrayList<>();
 	
 	public Leitor(String caminhoArquivo) throws IOException {
 		this.caminhoArquivo = caminhoArquivo;
+		lerLinhas();
+		definirChavesValores();
 	}
 	
-	private ArrayList<ArrayList <String>> lerLinhas() throws IOException {
-		BufferedReader leitor = new BufferedReader(new FileReader(this.caminhoArquivo));
-		ArrayList<String> linhas = new ArrayList<String>();
+	private void lerLinhas() throws IOException {
+		BufferedReader leitorArquivo = new BufferedReader(new FileReader(this.caminhoArquivo));
+		List<String> linhas = new ArrayList<>();
 		
-		String linhaAtual = leitor.readLine();
+		String linhaAtual = leitorArquivo.readLine();
 		while (linhaAtual != null) {
 			linhas.add(linhaAtual);
-			linhaAtual = leitor.readLine();
+			linhaAtual = leitorArquivo.readLine();
 		}
 		
-		ArrayList<ArrayList<String>> matriz = new ArrayList<ArrayList<String>>();
 		for (String linha : linhas) {
 			String[] partes = linha.split(";");
-			ArrayList<String> novaLinha = new ArrayList<String>(Arrays.asList(partes));
-	        matriz.add(novaLinha);
+	        linhasSeparadas.add(partes);
 	    }
 		
-		leitor.close();
-		 
-		return matriz;
+		leitorArquivo.close();
 	}
 	
-	public ArrayList<HashMap<String, String>> arrayChavesValores() throws IOException {
-		ArrayList<HashMap<String, String>> chavesValores = new ArrayList<HashMap<String, String>>();
-		ArrayList<ArrayList <String>> linhas = lerLinhas(); //Guardando o método lerLinhas() numa variável
-		
-		for(int i = 1; i < linhas.size(); i++) {
+	private void definirChavesValores() throws IOException {
+		for(int i = 1; i < linhasSeparadas.size(); i++) {
 			HashMap<String, String> novoHash = new HashMap<String, String>();
-			
-			for(int j = 0; j < linhas.get(i).size(); j++) {
-				novoHash.put(linhas.get(0).get(j), linhas.get(i).get(j));
+		
+			for(int j = 0; j < linhasSeparadas.get(i).length; j++) {
+				novoHash.put(linhasSeparadas.get(0)[j], linhasSeparadas.get(i)[j]);
 			}
 			
 			chavesValores.add(novoHash);
 		}
-		
-		return chavesValores;
+	
+		System.out.println(chavesValores);
 	}
 }
