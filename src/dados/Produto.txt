@@ -1,3 +1,0 @@
-idProduto;descricao;precoBase
-01;tenis;236,70
-02;sapato;259,99;

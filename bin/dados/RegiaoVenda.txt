@@ -1,3 +1,0 @@
-idRegiaoVenda;nome;zonas
-001;Sudeste;SP,RJ,MG,ES
-002;Sul;SC,PR,RS

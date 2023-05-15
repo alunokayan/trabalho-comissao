@@ -22,21 +22,12 @@ public class Pedido {
 	public Pedido(String caminhoArquivo, String idPedido) throws IOException {
 		Leitor leitor = new Leitor(caminhoArquivo);
 		
-	    HashMap<String, String> pedido = leitor.arrayChavesValores().stream().filter(id -> id.get("idPedido").equals(idPedido)).findFirst().orElse(null);
+	    HashMap<String, String> pedido = leitor.getArrayChavesValores().stream().filter(id -> id.get("idPedido").equals(idPedido)).findFirst().orElse(null);
 
 	    this.idPedido = pedido.get("idPedido");
 	    this.cpf = pedido.get("cpf");
 	    this.dataPedido = pedido.get("dataPedido");
 	    this.valorPedido = Float.parseFloat(pedido.get("valorPedido")); 
-		/*for (int i = 0; i < leitor.definirChavesValores().size(); i++) {
-			if (leitor.definirChavesValores().get(i).get("idPedido").equals(idPedido)) {
-				this.idPedido = leitor.definirChavesValores().get(i).get("idPedido");
-	            this.cpf = leitor.definirChavesValores().get(i).get("cpf");
-	            this.dataPedido = leitor.definirChavesValores().get(i).get("dataPedido");
-	            this.valorPedido = Float.parseFloat(leitor.definirChavesValores().get(i).get("valorPedido"));
-	            break;
-			}
-		}*/
 	}
 	
 	@Override
@@ -44,7 +35,7 @@ public class Pedido {
 		if (idPedido == null) {
 			throw new IllegalStateException("PEDIDO NÃO PRESENTE NO SISTEMA!");
 		} else {
-			return "ID do Pedido: " + idPedido + "\nCPF do Comprador: " + cpf + "\nData do Pedido: " + dataPedido + "\nValor do Pedido: " + valorPedido;
+			return "\n=======================" + "\nID do Pedido: " + idPedido + "\nCPF do Comprador: " + cpf + "\nData do Pedido: " + dataPedido + "\nValor do Pedido: " + valorPedido + "\n=======================";
 		}
 	}
 }

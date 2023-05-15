@@ -5,13 +5,13 @@ import java.io.*;
 
 public class Leitor {
 	private String caminhoArquivo;
-	private List<String[]> linhasSeparadas = new ArrayList<>();
-	private List<HashMap<String, String>> chavesValores = new ArrayList<>();
+	private List<String[]> linhasSeparadasPontoVirgula = new ArrayList<>();
+	private List<HashMap<String, String>> arrayChavesValores = new ArrayList<>();
 	
 	public Leitor(String caminhoArquivo) throws IOException {
 		this.caminhoArquivo = caminhoArquivo;
 		lerLinhas();
-		definirChavesValores();
+		definirArrayChavesValores();
 	}
 	
 	private void lerLinhas() throws IOException {
@@ -26,23 +26,25 @@ public class Leitor {
 		
 		for (String linha : linhas) {
 			String[] partes = linha.split(";");
-	        linhasSeparadas.add(partes);
+	        linhasSeparadasPontoVirgula.add(partes);
 	    }
 		
 		leitorArquivo.close();
 	}
 	
-	private void definirChavesValores() throws IOException {
-		for(int i = 1; i < linhasSeparadas.size(); i++) {
+	private void definirArrayChavesValores() throws IOException {
+		for(int i = 1; i < linhasSeparadasPontoVirgula.size(); i++) {
 			HashMap<String, String> novoHash = new HashMap<String, String>();
 		
-			for(int j = 0; j < linhasSeparadas.get(i).length; j++) {
-				novoHash.put(linhasSeparadas.get(0)[j], linhasSeparadas.get(i)[j]);
+			for(int j = 0; j < linhasSeparadasPontoVirgula.get(i).length; j++) {
+				novoHash.put(linhasSeparadasPontoVirgula.get(0)[j], linhasSeparadasPontoVirgula.get(i)[j]);
 			}
 			
-			chavesValores.add(novoHash);
+			arrayChavesValores.add(novoHash);
 		}
+	}
 	
-		System.out.println(chavesValores);
+	public List<HashMap<String, String>> getArrayChavesValores() {
+		return arrayChavesValores;
 	}
 }

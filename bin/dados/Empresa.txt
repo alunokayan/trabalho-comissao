@@ -1,3 +1,0 @@
-cnpj;razaoSocial
-111-111;Vendas Sudeste LTDA
-222-222;Vendas Sul LTDA
