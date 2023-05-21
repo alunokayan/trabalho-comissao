@@ -1,2 +1,3 @@
 idCategoria;nome;percentualComissao
-001;vestuario;10
+001;moda;10
+002;brinquedos;15

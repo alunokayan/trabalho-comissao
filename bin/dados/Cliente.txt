@@ -1,3 +1,4 @@
-cpf;nome
-123;Joao da Silva
-234;Pedro da Silva
+cpf;nome;uf
+123;Joao da Silva;SP
+234;Pedro da Silva;RJ
+345;Maria das Dores;MG

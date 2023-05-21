@@ -2,7 +2,6 @@ package br.edu.ifsp.xyz.comissao;
 
 import java.io.IOException;
 import java.util.*;
-import java.util.stream.*;
 
 import br.edu.ifsp.xyz.leitor.*;
 
@@ -22,7 +21,7 @@ public class Pedido {
 	public Pedido(String caminhoArquivo, String idPedido) throws IOException {
 		Leitor leitor = new Leitor(caminhoArquivo);
 		
-	    HashMap<String, String> pedido = leitor.arrayChavesValores().stream().filter(id -> id.get("idPedido").equals(idPedido)).findFirst().orElse(null);
+	    HashMap<String, String> pedido = leitor.arrayChavesValores().stream().filter(id -> id.get("idPedido").equals(idPedido.toUpperCase())).findFirst().orElse(null);
 
 	    this.idPedido = pedido.get("idPedido");
 	    this.cpf = pedido.get("cpf");

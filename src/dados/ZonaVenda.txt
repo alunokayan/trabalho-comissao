@@ -1,8 +1,8 @@
-idZonaVenda;uf;nome
+idZonaVenda;uf;nomeCompleto
 1;SP;São Paulo
 2;RJ;Rio de Janeiro
-3;ES;Espirito Santo
+3;ES;Espírito Santo
 4;MG;Minas Gerais
 5;PR;Paraná
 6;SC;Santa Catarina
-7;RS;Rio Grande Do Sul
+7;RS;Rio Grande do Sul
