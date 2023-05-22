@@ -14,10 +14,11 @@ public class Cliente {
 	private ZonaVenda uf;
 	private Pedido[] pedidos;
 	
-	public Cliente(String cpf, String nome, ZonaVenda uf) {
+	public Cliente(String cpf, String nome, ZonaVenda uf, Pedido[] pedidos) {
 		this.cpf = cpf;
 		this.nome = nome;
 		this.uf = uf;
+		this.pedidos = pedidos;
 	}
 	
 	public Cliente(String caminhoArquivo, String cpf) throws IOException {
@@ -42,6 +43,7 @@ public class Cliente {
 	    }
 	}
 	
+	@Override
 	public String toString() {
 		if (uf == null) {
 			throw new IllegalStateException("PEDIDO NÃO PRESENTE NO SISTEMA!");

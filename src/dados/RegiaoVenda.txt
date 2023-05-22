@@ -1,3 +1,3 @@
-idRegiaoVenda;nome;zonas
-001;Sudeste;SP,RJ,MG,ES
-002;Sul;SC,PR,RS
+idRegiaoVenda;nome;zonasVenda
+001;sudeste;SP,RJ,MG,ES
+002;sul;SC,PR,RS

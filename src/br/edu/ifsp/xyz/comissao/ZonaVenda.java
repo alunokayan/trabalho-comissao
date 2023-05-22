@@ -38,7 +38,7 @@ public class ZonaVenda {
 		if (uf == null) {
 			throw new IllegalStateException("PEDIDO NÃO PRESENTE NO SISTEMA!");
 		} else {
-			return "ID da Zona de Venda: " + idZonaVenda + "\nUF (Unidade Federativa): " + uf;
+			return "\n===================" + "ID da Zona de Venda: " + idZonaVenda + "\nUF (Unidade Federativa): " + uf +  " (" + nomeCompleto + ")" + "\n===================";
 		}
 	}
 }

@@ -4,9 +4,9 @@ import java.io.IOException;
 
 import br.edu.ifsp.xyz.comissao.*;
 
-public class ZonaVendaTeste {
+public class RegiaoVendaTeste {
 	public static void main(String[] args) throws IOException {
-		ZonaVenda zona = new ZonaVenda("./src/dados/ZonaVenda.txt", "es");
-		System.out.println(zona);
+		RegiaoVenda regiao = new RegiaoVenda("./src/dados/RegiaoVenda.txt", "sul");
+		System.out.println(regiao);
 	}
 }
