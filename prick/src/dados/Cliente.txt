@@ -1,0 +1,11 @@
+cpf;nome;logradouro;uf
+234.345.678-90;Maria Aparecida;Rua das Flores, 123;SP
+345.456.789-01;Pedro Henrique;Avenida Central, 456;RJ
+456.567.890-12;Ana Paula Oliveira;Rua dos Girassóis, 789;MG
+567.678.901-23;Lucas Santos;Praça da Liberdade, 456;SP
+678.789.012-34;Juliana Mendes;Rua das Palmeiras, 234;MG
+789.890.123-45;Mariana Silva;Avenida Paulista, 1234;SP
+890.901.234-56;Rodrigo Souza;Rua dos Ipês, 567;PR
+901.012.345-67;Patricia Ferreira;Avenida Atlântica, 890;RJ
+012.123.456-78;Gabriela Almeida;Rua das Acácias, 234;SP
+123.234.567-89;Marcelo Nunes;Avenida Brasil, 456;RJ

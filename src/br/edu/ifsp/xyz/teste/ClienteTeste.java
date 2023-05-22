@@ -6,7 +6,7 @@ import br.edu.ifsp.xyz.comissao.*;
 
 public class ClienteTeste {
 	public static void main(String[] args) throws IOException {
-		Cliente cliente = new Cliente("./src/dados/Cliente.txt", "345");
+		Cliente cliente = new Cliente("./src/dados/Cliente.txt", "123");
 		System.out.println(cliente);
 	}
 }
