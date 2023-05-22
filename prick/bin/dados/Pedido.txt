@@ -1,6 +1,0 @@
-idPedido;cpf;dataPedido;valorPedido;produtosVendidos
-1;123.234.567-89;01/01/2021;100.00;Boneca de Pano, Boneca de Pano
-2;123.234.567-89;02/01/2021;50.00;Refrigerante, Refrigerante, Refrigerante, Refrigerante, Refrigerante, Refrigerante, Refrigerante, Refrigerante, Refrigerante, Refrigerante
-3;567.678.901-23;05/01/2021;200.00;Perfume, Boneca de Pano, Boneca de Pano
-4;567.678.901-23;10/01/2021;130.00;Perfume, Bolo de Cenoura, Refrigerante
-5;678.789.012-34;19/01/2021;35.00;Carne, Refrigerante

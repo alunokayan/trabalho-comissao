@@ -1,6 +1,0 @@
-idProduto;nomeProduto;preco
-1;Boneca de Pano;50.0
-2;Bolo de Cenoura;25.0
-3;Refrigerante;5.0
-4;Perfume;100
-5;Carne;30.0

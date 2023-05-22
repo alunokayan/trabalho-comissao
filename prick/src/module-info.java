@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author kayan
- *
- */
-module trabalhoLogica {
-}

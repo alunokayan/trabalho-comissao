@@ -1,4 +1,0 @@
-nomeCategoria;comissao
-Brinquedos;5
-Televisores;25
-Smartphones;30
