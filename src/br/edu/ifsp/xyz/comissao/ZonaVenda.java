@@ -13,6 +13,7 @@ public class ZonaVenda {
 	public ZonaVenda(int idZonaVenda, String uf, String nomeCompleto) {
 		this.idZonaVenda = idZonaVenda;
 		this.uf = uf;
+		this.nomeCompleto = nomeCompleto;
 	}
 	
 	public ZonaVenda(String caminhoArquivo, String uf) throws IOException {

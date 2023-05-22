@@ -6,7 +6,7 @@ import br.edu.ifsp.xyz.comissao.*;
 
 public class ZonaVendaTeste {
 	public static void main(String[] args) throws IOException {
-		ZonaVenda zona = new ZonaVenda("./src/dados/ZonaVenda.txt", "");
+		ZonaVenda zona = new ZonaVenda("./src/dados/ZonaVenda.txt", "sp");
 		System.out.println(zona);
 	}
 }
