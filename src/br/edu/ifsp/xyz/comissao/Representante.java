@@ -26,9 +26,9 @@ public class Representante {
 		this.nome = representante.get("nome");
 	}
 	
-	public String calcularComissao() {
-		
-	}
+//	public String calcularComissao() {
+//		
+//	}
 	
 	@Override
 	public String toString() {

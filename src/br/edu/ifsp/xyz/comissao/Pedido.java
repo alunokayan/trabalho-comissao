@@ -12,7 +12,8 @@ public class Pedido {
 	private double valorPedido;
 	private Produto[] produtos;
 	
-	public Pedido(String idPedido, String cpf, String dataPedido, float valorPedido, Produto[] produtos) {
+	
+	public Pedido(String idPedido, String cpf, String dataPedido, float valorPedido, Produto[] produtos) throws IOException {
 		this.idPedido = idPedido;
 		this.cpf = cpf;
 		this.dataPedido = dataPedido;
@@ -20,24 +21,38 @@ public class Pedido {
 		this.produtos = produtos;
 	}
 	
+	public Pedido(String idPedido, String cpf, String dataPedido, float valorPedido, List<String> produtosSeparadosVirgula) throws IOException {
+		this.idPedido = idPedido;
+		this.cpf = cpf;
+		this.dataPedido = dataPedido;
+		this.valorPedido = valorPedido;
+		this.produtos = setProdutos(produtosSeparadosVirgula);
+	}
+	
 	public Pedido(String caminhoArquivo, String idPedido) throws IOException {
 		Leitor leitor = new Leitor(caminhoArquivo);
 		
 	    HashMap<String, String> pedido = leitor.arrayChavesValores().stream().filter(id -> id.get("idPedido").equals(idPedido.toUpperCase())).findFirst().orElse(null);
-		List<String> produtosSeparadosVirgula = Arrays.asList(pedido.get("produtos").split(","));
+	    List<String> produtosSeparadosVirgula = Arrays.asList(pedido.get("produtos").split(","));
 		
 	    this.idPedido = pedido.get("idPedido");
 	    this.cpf = pedido.get("cpf");
 	    this.dataPedido = pedido.get("dataPedido");
 	    this.valorPedido = Float.parseFloat(pedido.get("valorPedido")); 
-	    this.produtos = new Produto[produtosSeparadosVirgula.size()];
 	    
+	    setProdutos(produtosSeparadosVirgula);
+  
+	    System.out.println();
+	}
+	
+	private Produto[] setProdutos(List<String> produtosSeparadosVirgula) throws IOException {
+		this.produtos = new Produto[produtosSeparadosVirgula.size()];
 	    for (int i = 0; i < produtosSeparadosVirgula.size(); i++) {
 			Produto produto = new Produto("./src/dados/Produto.txt", produtosSeparadosVirgula.get(i));
 			this.produtos[i] = produto;
 		}
-	    
-	    System.out.println();
+	    return produtos;
+	  
 	}
 	
 	public Produto[] getProdutos() {
@@ -49,7 +64,7 @@ public class Pedido {
 		return "\n===================" + "\nID do Pedido: " + idPedido +
 				"\nCPF do Comprador: " + cpf +
 				"\nData do Pedido: " + dataPedido +
-				"\nValor do Pedido: " + valorPedido +
+				"\nValor do Pedido: " + String.format("%.2f", valorPedido) +
 				"\nProdutos: " + Arrays.toString(produtos) + "\n===================";
 	}
 }

@@ -14,11 +14,18 @@ public class Cliente {
 	private ZonaVenda uf;
 	private Pedido[] pedidos;
 	
-	public Cliente(String cpf, String nome, ZonaVenda uf, Pedido[] pedidos) {
+	public Cliente(String cpf, String nome, ZonaVenda uf, Pedido[] pedidos) throws IOException {
 		this.cpf = cpf;
 		this.nome = nome;
 		this.uf = uf;
 		this.pedidos = pedidos;
+	}
+	
+	public Cliente(String cpf, String nome, ZonaVenda uf, List<HashMap<String, String>> pedidosCPF) throws IOException {
+		this.cpf = cpf;
+		this.nome = nome;
+		this.uf = uf;
+		this.pedidos = setPedidos(pedidosCPF);
 	}
 	
 	public Cliente(String caminhoArquivo, String cpf) throws IOException {
@@ -31,16 +38,28 @@ public class Cliente {
 		this.cpf = cliente.get("cpf");
 		this.nome = cliente.get("nome");
 		this.uf = new ZonaVenda("./src/dados/ZonaVenda.txt", cliente.get("uf"));
+		
+		setPedidos(pedidosCPF);
+		
+	}
+	
+	private Pedido[] setPedidos(List<HashMap<String, String>> pedidosCPF) throws IOException {
 		this.pedidos = new Pedido[pedidosCPF.size()];
-	    for (int i = 0; i < pedidosCPF.size(); i++) {
-	        HashMap<String, String> pedidoMapa = pedidosCPF.get(i);
+		
+	    for (int i = 0; i < pedidosCPF.size(); i++)  {
+	        HashMap<String, String> pedidoMap = pedidosCPF.get(i);
+	        List<String> produtosSeparadosVirgula = Arrays.asList(pedidoMap.get("produtos").split(","));
 	        Pedido pedido = new Pedido(
-                pedidoMapa.get("idPedido"),
-                pedidoMapa.get("cpf"),
-                pedidoMapa.get("dataPedido"),
-                Float.parseFloat(pedidoMapa.get("valorPedido")));
+                pedidoMap.get("idPedido"),
+                pedidoMap.get("cpf"),
+                pedidoMap.get("dataPedido"),
+                Float.parseFloat(pedidoMap.get("valorPedido")),
+                produtosSeparadosVirgula);
+	        
 	        this.pedidos[i] = pedido;
 	    }
+	    
+	    return pedidos;
 	}
 	
 	public String getNome() {

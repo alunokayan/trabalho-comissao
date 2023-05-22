@@ -22,23 +22,36 @@ public class Vendedor {
 	public Vendedor(String caminhoArquivo, int idVendedor) throws IOException{
 		Leitor leitor = new Leitor(caminhoArquivo);
 		Leitor leitorCliente = new Leitor("./src/dados/Cliente.txt");
+		Leitor leitorPedidos = new Leitor("./src/dados/Pedido.txt");
 		
 		HashMap<String, String> vendedor = leitor.arrayChavesValores().stream().filter(id -> Integer.parseInt(id.get("idVendedor")) == idVendedor).findFirst().orElse(null);		 
+		
+		
 		
 		this.idVendedor = Integer.parseInt(vendedor.get("idVendedor"));
 		this.nome = vendedor.get("nome");
 		this.zonaVenda = new ZonaVenda("./src/dados/ZonaVenda.txt", vendedor.get("zonaVenda"));
 		
 		List<HashMap<String, String>> clientesUf = leitorCliente.arrayChavesValores().stream().filter(id -> id.get("uf").equals(zonaVenda.getUf())).collect(Collectors.toList());
+		
 		this.clientesCadastrados = new Cliente[clientesUf.size()];
 		
+		for (int i = 0; i < clientesUf.size(); i++) {
+			HashMap<String, String> clienteUf = clientesUf.get(i);
+			List<HashMap<String, String>> pedidosCPF = leitorPedidos.arrayChavesValores().stream().filter(pedido -> pedido.get("cpf").equals(clienteUf.get("cpf"))).collect(Collectors.toList());
+			Cliente cliente = new Cliente (
+					clienteUf.get("cpf"),
+					clienteUf.get("nome"),
+					new ZonaVenda ("./src/dados/ZonaVenda.txt", clienteUf.get("uf")),
+					pedidosCPF);
+			this.clientesCadastrados[i] = cliente;
+		}
 	}
 	
 	public String calcularComissaoPorCliente() {
 		double comissao = 125;
-		return "Por cada cliente cadastrado em " + zonaVenda.getNomeCompleto() + ", você recebeu: R$" + comissao + 
-				"\nClientes cadastrados: " + clientesCadastrados.length +
-				"\nTotal: R$" + comissao * clientesCadastrados.length;
+		return "Comissão por cliente atual: R$" + comissao +
+				"\nPor " + clientesCadastrados.length +  " cliente(s) cadastrado(s) em " + zonaVenda.getNomeCompleto() + ", você recebeu: R$" + comissao * clientesCadastrados.length;
 	}
 	
 	public String calcularComissaoPorVenda() {
@@ -55,7 +68,7 @@ public class Vendedor {
 	            }
 	        }
 	    }
-		return "Sua comissão final é: " + comissaoTotal;
+		return "Sua comissão por SOMENTE vendas é: R$" + String.format("%.2f", comissaoTotal);
 	}
 	
 	@Override

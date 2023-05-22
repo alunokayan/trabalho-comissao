@@ -40,6 +40,10 @@ public class Produto {
 	}
 	
 	public String toString() {
-		return "\n===================" + "ID do Produto: " + idProduto + "\nNome: " + nome.toUpperCase() + "\nDescrição: " + descricao + "\nPreço Base: " + precoBase + "\nCategoria: " + categoria.getNome() + "\n===================";
+		return "\n===================" + "ID do Produto: " + idProduto +
+				"\nNome: " + nome.toUpperCase() + "\nDescrição: " + descricao +
+				"\nPreço Base: R$" + String.format("%.2f", precoBase) +
+				"\nCategoria: " + categoria.getNome() +
+				"\n(Comissão: " + categoria.getPercentualComissao() * 100 + "%)" + "\n===================";
 	}
 }

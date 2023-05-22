@@ -17,7 +17,6 @@ public class ZonaVenda {
 	
 	public ZonaVenda(String caminhoArquivo, String uf) throws IOException {
 		Leitor leitor = new Leitor(caminhoArquivo);
-		Leitor leitorClientes = new Leitor("./src/dados/Cliente.txt");
 		
 		HashMap<String, String> zonaVenda = leitor.arrayChavesValores().stream().filter(id -> id.get("uf").equals(uf.toUpperCase())).findFirst().orElse(null);
 		

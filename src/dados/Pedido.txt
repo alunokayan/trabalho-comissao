@@ -4,3 +4,4 @@ idPedido;cpf;dataPedido;valorPedido;produtos
 3;234.567;03/01/2021;1799.98;celular,celular
 4;345.678;04/01/2021;75000.00;carrinho,carrinho,carrinho
 5;345.678;05/01/2021;38997.00;le bleu,le bleu,le bleu
+6;456.789;09/03/2023;899.99;celular
