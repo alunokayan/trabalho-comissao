@@ -6,11 +6,11 @@ import br.edu.ifsp.xyz.comissao.*;
 public class PedidoTeste {
 
 	public static void main(String[] args) throws IOException {
-		//long inicio = System.currentTimeMillis();
+		long inicio = System.currentTimeMillis();
 		Pedido pedido = new Pedido("./src/dados/Pedido.txt", "5");
 		System.out.println(pedido);
-		//System.out.println("---------------------------------");
-		//System.out.println("Tempo decorrido: " + (System.currentTimeMillis() - inicio) + "ms");
+		System.out.println("---------------------------------");
+		System.out.println("Tempo decorrido: " + (System.currentTimeMillis() - inicio) + "ms");
 	}
 
 }

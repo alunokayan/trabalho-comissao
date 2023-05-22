@@ -14,7 +14,7 @@ public class Cliente {
 	private ZonaVenda uf;
 	private Pedido[] pedidos;
 	
-	public Cliente(String cpf, String nome, ZonaVenda uf, Pedido[] pedidos) {
+	public Cliente(String cpf, String nome, ZonaVenda uf) {
 		this.cpf = cpf;
 		this.nome = nome;
 		this.uf = uf;
@@ -43,12 +43,16 @@ public class Cliente {
 	    }
 	}
 	
+	public String getNome() {
+		return nome;
+	}
+	
 	@Override
 	public String toString() {
 		if (uf == null) {
 			throw new IllegalStateException("PEDIDO NÃO PRESENTE NO SISTEMA!");
 		} else {
-			return "CPF: " + cpf + "\nNome: " + nome + "\nUF (Unidade Federativa): " + uf.getUf() + " (" + uf.getNomeCompleto() + ")" + "\nPedidos: " + Arrays.toString(pedidos);
+			return "\n===================" + "CPF: " + cpf + "\nNome: " + nome + "\nUF (Unidade Federativa): " + uf.getUf() + " (" + uf.getNomeCompleto() + ")" + "\nPedidos: " + Arrays.toString(pedidos) + "\n===================";
 		}
 	}
 }

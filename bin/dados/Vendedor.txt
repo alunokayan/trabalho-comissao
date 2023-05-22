@@ -1,3 +1,8 @@
-idVendedor;nome;zona
+idVendedor;nome;zonaVenda
 111;Fernando Silva;SP
-222;Jéssica Medeiros;RS
+222;Cristiane Medeiros;RJ
+333;Cláudio Ferreira;MG
+444;Leandra Silva Rosa;ES
+555;Maria Eduarda;PR
+666;Belchior Bacilos;RS
+777;Gilberto Torres;SC
