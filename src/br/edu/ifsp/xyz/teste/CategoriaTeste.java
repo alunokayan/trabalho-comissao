@@ -6,7 +6,7 @@ import br.edu.ifsp.xyz.comissao.*;
 
 public class CategoriaTeste {
 	public static void main(String[] args) throws IOException {
-		Categoria categoria = new Categoria("./src/dados/Categoria.txt", "moda");
+		Categoria categoria = new Categoria("./src/dados/Categoria.txt", "perfumaria");
 		System.out.println(categoria);
 	}
 }

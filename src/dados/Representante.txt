@@ -1,3 +1,3 @@
-idRepresentante;regiao;nome
-01;Sudeste;Vagner Melo
-02;Sul;Tiago Sales
+idRepresentante;regiaoVenda;nome
+01;sudeste;Vagner Melo
+02;sul;Tiago Sales

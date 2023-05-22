@@ -32,29 +32,34 @@ public class Vendedor {
 		List<HashMap<String, String>> clientesUf = leitorCliente.arrayChavesValores().stream().filter(id -> id.get("uf").equals(zonaVenda.getUf())).collect(Collectors.toList());
 		this.clientesCadastrados = new Cliente[clientesUf.size()];
 		
-		for (int i = 0; i < clientesUf.size(); i++) {
-			HashMap<String, String> clienteUf = clientesUf.get(i);
-			Cliente cliente = new Cliente (
-					clienteUf.get("cpf"),
-					clienteUf.get("nome"),
-					new ZonaVenda ("./src/dados/ZonaVenda.txt", clienteUf.get("uf")));
-			this.clientesCadastrados[i] = cliente;
-		}
 	}
 	
-	public String calcularComissao() {
+	public String calcularComissaoPorCliente() {
 		double comissao = 125;
 		return "Por cada cliente cadastrado em " + zonaVenda.getNomeCompleto() + ", você recebeu: R$" + comissao + 
 				"\nClientes cadastrados: " + clientesCadastrados.length +
 				"\nTotal: R$" + comissao * clientesCadastrados.length;
 	}
 	
+	public String calcularComissaoPorVenda() {
+		double comissaoTotal = 0;
+		for (int i = 0; i < clientesCadastrados.length; i++) {
+	        Pedido[] pedidos = clientesCadastrados[i].getPedidos();
+	        
+	        for (int j = 0; j < pedidos.length; j++) {
+	            Produto[] produtos = pedidos[j].getProdutos();
+	            
+	            for (int k = 0; k < produtos.length; k++) {
+	                double valorComissao = produtos[k].getPrecoBase() * produtos[k].getCategoria().getPercentualComissao();
+	                comissaoTotal += valorComissao;
+	            }
+	        }
+	    }
+		return "Sua comissão final é: " + comissaoTotal;
+	}
+	
 	@Override
 	public String toString() {
-		if (idVendedor == 0) {
-			throw new IllegalStateException("PEDIDO NÃO PRESENTE NO SISTEMA!");
-		} else {
-			return "ID do Vendedor: " + idVendedor + "\nNome: " + nome + "\nZona de Venda: " + zonaVenda.getUf() + "\nClientes Cadastrados" + Arrays.toString(clientesCadastrados);
-		}
+		return "ID do Vendedor: " + idVendedor + "\nNome: " + nome + "\nZona de Venda: " + zonaVenda.getUf() + "\nClientes Cadastrados" + Arrays.toString(clientesCadastrados);
 	}
 }

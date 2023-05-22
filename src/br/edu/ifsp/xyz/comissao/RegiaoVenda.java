@@ -35,10 +35,6 @@ public class RegiaoVenda {
 	
 	@Override
 	public String toString() {
-		if (nome == null) {
-			throw new IllegalStateException("PEDIDO NÃO PRESENTE NO SISTEMA!");
-		} else {
-			return "ID da Região de Venda: " + idRegiaoVenda + "\nNome: " + nome.toUpperCase() + "\nZonas de Venda: " + Arrays.toString(zonasVenda);
-		}
+		return "\n===================" + "\nID da Região de Venda: " + idRegiaoVenda + "\nNome: " + nome.toUpperCase() + "\nZonas de Venda: " + Arrays.toString(zonasVenda);
 	}
 }

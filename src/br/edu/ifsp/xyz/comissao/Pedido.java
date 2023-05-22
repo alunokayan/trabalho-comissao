@@ -9,41 +9,47 @@ public class Pedido {
 	private String idPedido;
 	private String cpf;
 	private String dataPedido;
-	private float valorPedido;
+	private double valorPedido;
+	private Produto[] produtos;
 	
-	public Pedido(String idPedido, String cpf, String dataPedido, float valorPedido) {
+	public Pedido(String idPedido, String cpf, String dataPedido, float valorPedido, Produto[] produtos) {
 		this.idPedido = idPedido;
 		this.cpf = cpf;
 		this.dataPedido = dataPedido;
 		this.valorPedido = valorPedido;
+		this.produtos = produtos;
 	}
 	
 	public Pedido(String caminhoArquivo, String idPedido) throws IOException {
 		Leitor leitor = new Leitor(caminhoArquivo);
 		
 	    HashMap<String, String> pedido = leitor.arrayChavesValores().stream().filter(id -> id.get("idPedido").equals(idPedido.toUpperCase())).findFirst().orElse(null);
-
+		List<String> produtosSeparadosVirgula = Arrays.asList(pedido.get("produtos").split(","));
+		
 	    this.idPedido = pedido.get("idPedido");
 	    this.cpf = pedido.get("cpf");
 	    this.dataPedido = pedido.get("dataPedido");
 	    this.valorPedido = Float.parseFloat(pedido.get("valorPedido")); 
-		/*for (int i = 0; i < leitor.definirChavesValores().size(); i++) {
-			if (leitor.definirChavesValores().get(i).get("idPedido").equals(idPedido)) {
-				this.idPedido = leitor.definirChavesValores().get(i).get("idPedido");
-	            this.cpf = leitor.definirChavesValores().get(i).get("cpf");
-	            this.dataPedido = leitor.definirChavesValores().get(i).get("dataPedido");
-	            this.valorPedido = Float.parseFloat(leitor.definirChavesValores().get(i).get("valorPedido"));
-	            break;
-			}
-		}*/
+	    this.produtos = new Produto[produtosSeparadosVirgula.size()];
+	    
+	    for (int i = 0; i < produtosSeparadosVirgula.size(); i++) {
+			Produto produto = new Produto("./src/dados/Produto.txt", produtosSeparadosVirgula.get(i));
+			this.produtos[i] = produto;
+		}
+	    
+	    System.out.println();
+	}
+	
+	public Produto[] getProdutos() {
+		return produtos;
 	}
 	
 	@Override
 	public String toString() {
-		if (idPedido == null) {
-			throw new IllegalStateException("PEDIDO NÃO PRESENTE NO SISTEMA!");
-		} else {
-			return "\n===================" + "\nID do Pedido: " + idPedido + "\nCPF do Comprador: " + cpf + "\nData do Pedido: " + dataPedido + "\nValor do Pedido: " + valorPedido + "\n===================";
-		}
+		return "\n===================" + "\nID do Pedido: " + idPedido +
+				"\nCPF do Comprador: " + cpf +
+				"\nData do Pedido: " + dataPedido +
+				"\nValor do Pedido: " + valorPedido +
+				"\nProdutos: " + Arrays.toString(produtos) + "\n===================";
 	}
 }

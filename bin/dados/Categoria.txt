@@ -1,3 +1,6 @@
-idCategoria;nome;percentualComissao
-001;moda;10
-002;brinquedos;15
+idCategoria;nome
+001;moda
+002;brinquedos
+003;eletrônicos
+004;perfumaria
+005;alimentação

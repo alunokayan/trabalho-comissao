@@ -36,10 +36,6 @@ public class ZonaVenda {
 	
 	@Override
 	public String toString() {
-		if (uf == null) {
-			throw new IllegalStateException("PEDIDO NÃO PRESENTE NO SISTEMA!");
-		} else {
-			return "\n===================" + "ID da Zona de Venda: " + idZonaVenda + "\nUF (Unidade Federativa): " + uf +  " (" + nomeCompleto + ")" + "\n===================";
-		}
+		return "\n===================" + "\nID da Zona de Venda: " + idZonaVenda + "\nUF (Unidade Federativa): " + uf +  " (" + nomeCompleto + ")" + "\n===================";
 	}
 }

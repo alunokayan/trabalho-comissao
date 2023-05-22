@@ -1,3 +1,6 @@
-idProduto;nome;precoBase;categoria
-01;tenis;236.70;moda
-02;carrinho;259.99;brinquedos
+idProduto;nome;descricao;precoBase;categoria
+01;tenis mcfly;Com o seu estilo retrô, este tênis é uma verdadeira viagem no tempo!;175.50;moda
+02;carrinho;PARA CRIANÇAS MAIORES DE 24 ANOS!!!;25000.00;brinquedos
+03;fantasia de politico;TALKEI!;22.17;moda
+04;celular;Quebrou mais um? Obsolescência programada ou mão de alface?;899.99;eletrônicos
+05;le bleu;Embalagem azul, frasco azul, líquido azul, tudo azul.;12999.99;perfumaria

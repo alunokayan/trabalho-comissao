@@ -1,6 +1,6 @@
-idPedido;cpf;dataPedido;valorPedido
-1;123;01/01/2021;100.00
-2;123;02/01/2021;102.00
-3;234;03/01/2021;1000.00
-4;345;04/01/2021;500.00
-5;345;05/01/2021;750.00
+idPedido;cpf;dataPedido;valorPedido;produtos
+1;123.456;01/01/2021;25175.50;tenis mcfly,carrinho
+2;123.456;02/01/2021;13021.17;fantasia de politico,le bleu
+3;234.567;03/01/2021;1799.98;celular,celular
+4;345.678;04/01/2021;75000.00;carrinho,carrinho,carrinho
+5;345.678;05/01/2021;38997.00;le bleu,le bleu,le bleu
